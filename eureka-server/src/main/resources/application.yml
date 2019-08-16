@@ -13,3 +13,17 @@ eureka:
 spring:
   application:
     name: eurka-server
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  server:
+    port: 20012
+    address: 127.0.0.1
+  endpoints:
+    shutdown:
+      sensitive: false
+    web:
+      exposure:
+        include: shutdown

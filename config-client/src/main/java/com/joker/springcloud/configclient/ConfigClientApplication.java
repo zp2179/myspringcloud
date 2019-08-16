@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableDiscoveryClient
 @RestController
 @RefreshScope
-
 public class ConfigClientApplication {
 
 	public static void main(String[] args) {
