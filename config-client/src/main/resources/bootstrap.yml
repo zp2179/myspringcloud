@@ -1,0 +1,50 @@
+server:
+  port: 8881
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /config-client
+
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  server:
+    port: 20012
+    address: 127.0.0.1
+  endpoints:
+    shutdown:
+      sensitive: false
+    web:
+      exposure:
+        include: shutdown
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+     discovery:
+       enabled: true
+       serviceId: config-server
+     name: config-client
+     profile: ${spring.profiles.active:dev}
+     label: dev
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/config-client/swagger-ui.html
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+common:
+  zgxy3.service-name: config-client-localhost1
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

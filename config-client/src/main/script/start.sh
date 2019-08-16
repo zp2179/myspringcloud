@@ -1,0 +1,1 @@
+$(cd "$(dirname "$0")";pwd)/boot.sh start config-client-0.0.1-SNAPSHOT.jar config-client.out $1
